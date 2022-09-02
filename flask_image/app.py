@@ -1,13 +1,17 @@
-from flask import Flask
-app = Flask(__name__)
+from flask import Flask, render_template
+app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
-def hello_():
-    return "<h1 style='margin-left: 35%;'>Hello from flask python</h1>"
+def index():
+    return render_template('index.html')
 
 @app.route('/test')
 def test():
-    return '<h1>Test page for flask</h1>'
+    return render_template('test.html')
+
+@app.route('/info')
+def info():
+    return render_template('info.html')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=1532)
